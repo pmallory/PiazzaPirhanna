@@ -4,6 +4,7 @@ import sys
 
 import piazza_api
 
+#TODO take roster file name
 def initialize_class(class_id, emails_path):
     emails = []
     with open(emails_path)  as f:
@@ -16,13 +17,15 @@ def initialize_class(class_id, emails_path):
 
     with open('new_roster.csv', 'w') as roster:
         writer = csv.writer(roster)
-        writer.writerow(['Name', 'Canonical Email', 'Piazza ID', 'Is Enrolled'])
+        writer.writerow(['Canonical Email', 'Piazza ID', 'Is Enrolled', 'Name' ])
         for student in piazza_data:
             if student.get(u'role') == u'student':
-                writer.writerow([student.get(u'name'),
-                                 student.get(u'email'),
+                writer.writerow([student.get(u'email'),
                                  student.get(u'id'),
-                                 True])
+                                 True,
+                                 student.get(u'name')])
+
+    print("roster written to new_roster.csv") #TODO fix
 
 def sync(class_id, roster_path):
     pass
