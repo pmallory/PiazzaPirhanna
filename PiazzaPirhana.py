@@ -1,10 +1,28 @@
 import argparse
+import csv
 import sys
 
 import piazza_api
 
 def initialize_class(class_id, emails_path):
-    pass
+    emails = []
+    with open(emails_path)  as f:
+        for email_address in f:
+            emails.append(email_address)
+
+    p = piazza_api.PiazzaAPI(class_id)
+    p.user_auth()
+    piazza_data = p.enroll_students(emails)
+
+    with open('new_roster.csv', 'w') as roster:
+        writer = csv.writer(roster)
+        writer.writerow(['Name', 'Canonical Email', 'Piazza ID', 'Is Enrolled'])
+        for student in piazza_data:
+            if student.get(u'role') == u'student':
+                writer.writerow([student.get(u'name'),
+                                 student.get(u'email'),
+                                 student.get(u'id'),
+                                 True])
 
 def sync(class_id, roster_path):
     pass
