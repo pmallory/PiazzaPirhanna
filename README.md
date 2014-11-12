@@ -19,6 +19,7 @@ Synchronize Piazza with the Rainman roster mode
 1. Don't panic! PiazzaPirhanna will give you a list of the students it wants to remove from Piazza/the roster.
 It won't actually remove them until you tell it to.
 Hit control-c to abort the sync
-2. Run something like this: `python PiazzaPirhana.py -s new_roster.csv -id i0ifo49m8204pq -nd nd001`
-3. PiazzaPirhanna will tell you the students it thinks have dropped. Press return if the list looks correct. (If the list isn't correct talk to Philip :p)
-4. The students will be removed from Piazza and from the roster csv.
+2. Download coached_students.csv from rainman and put it in the same directory as PiazzaPirhanna.
+3. Run something like this: `python PiazzaPirhana.py -s new_roster.csv -id i0ifo49m8204pq -nd nd001`
+4. PiazzaPirhanna will tell you the students it thinks have dropped. Press return if the list looks correct. (If the list isn't correct talk to Philip :p)
+5. The students will be removed from Piazza and from the roster csv.
